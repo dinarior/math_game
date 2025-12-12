@@ -1,17 +1,44 @@
 import React from 'react';
-import { Play, Package } from 'lucide-react';
+import { Play, Package, Map, Trophy } from 'lucide-react';
 import { CharacterId } from '../types';
-import { getCollectionStats } from '../services/collections';
+import { LevelState } from '../services/levelManager';
+import soundManager from '../services/soundManager';
 
 interface MainMenuProps {
   onStart: () => void;
   character: CharacterId;
   setCharacter: (c: CharacterId) => void;
   onViewCollection: () => void;
+  onLevelSelect?: () => void;
+  onViewHighScores?: () => void;
+  levelState: LevelState;
 }
 
-const MainMenu: React.FC<MainMenuProps> = ({ onStart, character, setCharacter, onViewCollection }) => {
-  const stats = getCollectionStats();
+const MainMenu: React.FC<MainMenuProps> = ({
+  onStart,
+  character,
+  setCharacter,
+  onViewCollection,
+  onLevelSelect,
+  onViewHighScores,
+  levelState
+}) => {
+  // Calculate total collectibles across all levels
+  const totalCollected = Object.values(levelState.levelProgress).reduce(
+    (sum, progress) => {
+      if (progress.levelId === levelState.currentLevel) {
+        return sum + levelState.currentCollectibles;
+      }
+      return sum + (progress.completed ? 10 : 0);
+    },
+    0
+  );
+  const totalPossible = 100; // 10 levels × 10 collectibles
+
+  const handleCharacterSelect = (c: CharacterId) => {
+    soundManager.play('buttonClick');
+    setCharacter(c);
+  };
 
   return (
     <div className="absolute inset-0 flex items-center justify-center bg-sky-200 overflow-hidden">
@@ -26,29 +53,56 @@ const MainMenu: React.FC<MainMenuProps> = ({ onStart, character, setCharacter, o
         </h1>
         <p className="text-2xl text-sky-400 font-bold mb-8">Jungle Adventure</p>
 
-        {/* Collection Progress */}
-        <div className="mb-6">
+        {/* Quick Action Buttons */}
+        <div className="grid grid-cols-2 gap-3 mb-6">
+          {/* Collection Progress */}
           <button
             onClick={onViewCollection}
-            className="bg-green-100 hover:bg-green-200 border-2 border-green-300 rounded-2xl p-4 flex items-center justify-center gap-3 w-full transition-colors group"
+            className="bg-green-100 hover:bg-green-200 border-2 border-green-300 rounded-2xl p-3 flex items-center justify-center gap-2 transition-colors group"
           >
-            <Package className="text-green-600 group-hover:scale-110 transition-transform" />
+            <Package className="text-green-600 group-hover:scale-110 transition-transform" size={24} />
             <div className="text-left">
-              <p className="text-lg font-bold text-green-700">Animal Collection</p>
-              <p className="text-sm text-green-600">
-                {stats.collected} / {stats.total} animals ({stats.percentage}%)
-              </p>
+              <p className="text-sm font-bold text-green-700">Collection</p>
+              <p className="text-xs text-green-600">{totalCollected}/{totalPossible}</p>
             </div>
           </button>
+
+          {/* Level Select */}
+          {onLevelSelect && (
+            <button
+              onClick={onLevelSelect}
+              className="bg-purple-100 hover:bg-purple-200 border-2 border-purple-300 rounded-2xl p-3 flex items-center justify-center gap-2 transition-colors group"
+            >
+              <Map className="text-purple-600 group-hover:scale-110 transition-transform" size={24} />
+              <div className="text-left">
+                <p className="text-sm font-bold text-purple-700">Levels</p>
+                <p className="text-xs text-purple-600">Select Stage</p>
+              </div>
+            </button>
+          )}
+
+          {/* High Scores */}
+          {onViewHighScores && (
+            <button
+              onClick={onViewHighScores}
+              className="bg-yellow-100 hover:bg-yellow-200 border-2 border-yellow-300 rounded-2xl p-3 flex items-center justify-center gap-2 transition-colors group col-span-2"
+            >
+              <Trophy className="text-yellow-600 group-hover:scale-110 transition-transform" size={24} />
+              <div className="text-left">
+                <p className="text-sm font-bold text-yellow-700">High Scores</p>
+                <p className="text-xs text-yellow-600">View Leaderboard</p>
+              </div>
+            </button>
+          )}
         </div>
-        
+
         <div className="mb-8">
           <p className="text-gray-500 font-bold mb-4 uppercase tracking-wider text-sm">Choose Your Character</p>
-          
+
           <div className="flex justify-center gap-4">
             {/* Amit Selection */}
             <button
-               onClick={() => setCharacter('AMIT')}
+               onClick={() => handleCharacterSelect('AMIT')}
                className={`relative flex flex-col items-center transition-all ${character === 'AMIT' ? 'scale-110' : 'opacity-60 hover:opacity-100 hover:scale-105'}`}
             >
                {character === 'AMIT' && (
@@ -63,7 +117,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ onStart, character, setCharacter, o
 
             {/* Yuval Selection */}
             <button
-               onClick={() => setCharacter('YUVAL')}
+               onClick={() => handleCharacterSelect('YUVAL')}
                className={`relative flex flex-col items-center transition-all ${character === 'YUVAL' ? 'scale-110' : 'opacity-60 hover:opacity-100 hover:scale-105'}`}
             >
                {character === 'YUVAL' && (
@@ -78,7 +132,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ onStart, character, setCharacter, o
 
             {/* Kangaroo Selection */}
             <button
-               onClick={() => setCharacter('KANGAROO')}
+               onClick={() => handleCharacterSelect('KANGAROO')}
                className={`relative flex flex-col items-center transition-all ${character === 'KANGAROO' ? 'scale-110' : 'opacity-60 hover:opacity-100 hover:scale-105'}`}
             >
                {character === 'KANGAROO' && (
@@ -93,16 +147,16 @@ const MainMenu: React.FC<MainMenuProps> = ({ onStart, character, setCharacter, o
           </div>
         </div>
 
-        <button 
+        <button
           onClick={onStart}
           className="group relative inline-flex items-center justify-center px-8 py-4 text-2xl font-bold text-white transition-all duration-200 bg-green-500 font-sans rounded-full hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-green-300 focus:ring-offset-2 active:scale-95 w-full shadow-lg border-b-4 border-green-700"
         >
           <Play className="mr-3 w-8 h-8 fill-current" />
           Start Adventure
         </button>
-        
+
         <p className="mt-6 text-gray-400 text-sm font-semibold">
-          For ages 4-6 • Math Adventure Game
+          For ages 4-6 • 10 Levels • Math Adventure Game
         </p>
       </div>
     </div>

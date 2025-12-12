@@ -1,0 +1,247 @@
+[
+  {
+    "id": "kids_math_q1",
+    "question": "כמה זה 1 + 1? (☝️ + ☝️)",
+    "options": ["1", "2", "3", "4"],
+    "correctAnswer": "2",
+    "explanation": "אצבע אחת ועוד אצבע אחת הן שתי אצבעות."
+  },
+  {
+    "id": "kids_math_q2",
+    "question": "ספרי את התפוחים: 🍎🍎 + 🍎. כמה תפוחים יש ביחד?",
+    "options": ["2", "3", "4", "5"],
+    "correctAnswer": "3",
+    "explanation": "שני תפוחים ועוד תפוח אחד הם שלושה תפוחים."
+  },
+  {
+    "id": "kids_math_q3",
+    "question": "כמה זה 2 + 2? (✌️ + ✌️)",
+    "options": ["3", "4", "5", "6"],
+    "correctAnswer": "4",
+    "explanation": "שתיים ועוד שתיים שווה ארבע."
+  },
+  {
+    "id": "kids_math_q4",
+    "question": "כמה כוכבים יש כאן? ⭐⭐⭐",
+    "options": ["2", "3", "4", "1"],
+    "correctAnswer": "3",
+    "explanation": "יש כאן שלושה כוכבים."
+  },
+  {
+    "id": "kids_math_q5",
+    "question": "אם יש לי סוכרייה אחת 🍬 וקיבלתי עוד שתיים 🍬🍬, כמה סוכריות יש לי עכשיו?",
+    "options": ["2", "3", "4", "5"],
+    "correctAnswer": "3",
+    "explanation": "אחת ועוד שתיים זה שלוש."
+  },
+  {
+    "id": "kids_math_q6",
+    "question": "כמה זה 5 + 0? (🖐️ + כלום)",
+    "options": ["0", "5", "10", "1"],
+    "correctAnswer": "5",
+    "explanation": "חמש ועוד אפס נשאר חמש."
+  },
+  {
+    "id": "kids_math_q7",
+    "question": "ספרי את הכלבים: 🐶🐶 + 🐶🐶. כמה כלבים יש?",
+    "options": ["3", "4", "5", "2"],
+    "correctAnswer": "4",
+    "explanation": "שני כלבים ועוד שני כלבים הם ארבעה כלבים."
+  },
+  {
+    "id": "kids_math_q8",
+    "question": "כמה אצבעות יש ביד אחת? 🖐️",
+    "options": ["3", "4", "5", "6"],
+    "correctAnswer": "5",
+    "explanation": "ביד אחת יש חמש אצבעות."
+  },
+  {
+    "id": "kids_math_q9",
+    "question": "כמה זה 3 + 1? (🤟 + ☝️)",
+    "options": ["3", "4", "5", "2"],
+    "correctAnswer": "4",
+    "explanation": "שלוש ועוד אחד שווה ארבע."
+  },
+  {
+    "id": "kids_math_q10",
+    "question": "היו 3 בלונים 🎈🎈🎈, אחד התפוצץ. כמה נשארו?",
+    "options": ["1", "2", "3", "0"],
+    "correctAnswer": "2",
+    "explanation": "שלוש פחות אחד שווה שתיים."
+  },
+  {
+    "id": "kids_math_q11",
+    "question": "כמה עיניים יש לפרצוף הזה? 👀",
+    "options": ["1", "2", "3", "4"],
+    "correctAnswer": "2",
+    "explanation": "לפרצוף יש שתי עיניים."
+  },
+  {
+    "id": "kids_math_q12",
+    "question": "כמה זה 2 + 3? (✌️ + 🤟)",
+    "options": ["4", "5", "6", "3"],
+    "correctAnswer": "5",
+    "explanation": "שתיים ועוד שלוש שווה חמש."
+  },
+  {
+    "id": "kids_math_q13",
+    "question": "כמה מכוניות יש? 🚗 + 🚗 + 🚗",
+    "options": ["2", "3", "4", "5"],
+    "correctAnswer": "3",
+    "explanation": "יש כאן שלוש מכוניות."
+  },
+  {
+    "id": "kids_math_q14",
+    "question": "כמה זה 4 - 1? (ארבע אצבעות ומורידים אחת)",
+    "options": ["2", "3", "4", "5"],
+    "correctAnswer": "3",
+    "explanation": "ארבע פחות אחד שווה שלוש."
+  },
+  {
+    "id": "kids_math_q15",
+    "question": "ספרי את הפרחים: 🌻🌻 + 🌻🌻🌻. כמה פרחים יחד?",
+    "options": ["4", "5", "6", "3"],
+    "correctAnswer": "5",
+    "explanation": "שני פרחים ועוד שלושה פרחים הם חמישה פרחים."
+  },
+  {
+    "id": "q_16",
+    "question": "כמה זה 1 + 2? (☝️ + ✌️)",
+    "options": ["2", "3", "4", "1"],
+    "correctAnswer": "3",
+    "explanation": "אחד ועוד שתיים זה שלוש."
+  },
+  {
+    "id": "q_17",
+    "question": "כמה ארנבים יש? 🐰🐰🐰",
+    "options": ["2", "3", "4", "5"],
+    "correctAnswer": "3",
+    "explanation": "יש כאן שלושה ארנבים."
+  },
+  {
+    "id": "q_18",
+    "question": "היו 5 פיצות 🍕, אכלנו 2. כמה נשארו?",
+    "options": ["2", "3", "4", "1"],
+    "correctAnswer": "3",
+    "explanation": "חמש פחות שתיים שווה שלוש."
+  },
+  {
+    "id": "q_19",
+    "question": "כמה זה 0 + 3? (כלום + 🤟)",
+    "options": ["0", "3", "1", "4"],
+    "correctAnswer": "3",
+    "explanation": "אפס ועוד שלוש זה שלוש."
+  },
+  {
+    "id": "q_20",
+    "question": "ספרי את הפרפרים: 🦋 + 🦋🦋. כמה ביחד?",
+    "options": ["2", "3", "4", "5"],
+    "correctAnswer": "3",
+    "explanation": "אחד ועוד שניים זה שלוש."
+  },
+  {
+    "id": "q_21",
+    "question": "כמה זה 4 + 4? (ארבע ועוד ארבע)",
+    "options": ["6", "7", "8", "9"],
+    "correctAnswer": "8",
+    "explanation": "ארבע ועוד ארבע שווה שמונה."
+  },
+  {
+    "id": "q_22",
+    "question": "כמה אצבעות מורמות? 🖐️ + ☝️",
+    "options": ["5", "6", "7", "4"],
+    "correctAnswer": "6",
+    "explanation": "חמש אצבעות ועוד אצבע אחת הן שש אצבעות."
+  },
+  {
+    "id": "q_23",
+    "question": "כמה זה 2 - 1? (✌️ פחות אצבע)",
+    "options": ["0", "1", "2", "3"],
+    "correctAnswer": "1",
+    "explanation": "שתיים פחות אחד זה אחד."
+  },
+  {
+    "id": "q_24",
+    "question": "כמה דובים יש בתמונה? 🐻🐻🐻🐻",
+    "options": ["3", "4", "5", "6"],
+    "correctAnswer": "4",
+    "explanation": "יש כאן ארבעה דובים."
+  },
+  {
+    "id": "q_25",
+    "question": "כמה זה 3 + 3? (🤟 + 🤟)",
+    "options": ["5", "6", "7", "4"],
+    "correctAnswer": "6",
+    "explanation": "שלוש ועוד שלוש שווה שש."
+  },
+  {
+    "id": "q_26",
+    "question": "יש לי 4 עוגיות 🍪🍪🍪🍪, נתתי אחת לחברה. כמה נשארו לי?",
+    "options": ["2", "3", "4", "1"],
+    "correctAnswer": "3",
+    "explanation": "ארבע פחות אחת שווה שלוש."
+  },
+  {
+    "id": "q_27",
+    "question": "כמה זה 5 + 2? (🖐️ + ✌️)",
+    "options": ["6", "7", "8", "5"],
+    "correctAnswer": "7",
+    "explanation": "חמש ועוד שתיים שווה שבע."
+  },
+  {
+    "id": "q_28",
+    "question": "כמה חתולים יש? 🐱 + 🐱 + 🐱 + 🐱 + 🐱",
+    "options": ["4", "5", "6", "3"],
+    "correctAnswer": "5",
+    "explanation": "יש כאן חמישה חתולים."
+  },
+  {
+    "id": "q_29",
+    "question": "כמה זה 10 - 5? (עשר אצבעות, מורידים יד אחת)",
+    "options": ["4", "5", "6", "3"],
+    "correctAnswer": "5",
+    "explanation": "עשר פחות חמש שווה חמש."
+  },
+  {
+    "id": "q_30",
+    "question": "כמה זה 1 + 4? (☝️ + 🖖)",
+    "options": ["4", "5", "6", "3"],
+    "correctAnswer": "5",
+    "explanation": "אחד ועוד ארבע שווה חמש."
+  },
+  {
+    "id": "q_31",
+    "question": "כמה כדורים יש? ⚽⚽",
+    "options": ["1", "2", "3", "4"],
+    "correctAnswer": "2",
+    "explanation": "יש כאן שני כדורים."
+  },
+  {
+    "id": "q_32",
+    "question": "כמה זה 6 + 1? (שש ועוד אחד)",
+    "options": ["6", "7", "8", "5"],
+    "correctAnswer": "7",
+    "explanation": "שש ועוד אחד שווה שבע."
+  },
+  {
+    "id": "q_33",
+    "question": "היו 2 ציפורים 🐦🐦, שתיהן עפו. כמה נשארו?",
+    "options": ["1", "2", "0", "3"],
+    "correctAnswer": "0",
+    "explanation": "שתיים פחות שתיים שווה אפס."
+  },
+  {
+    "id": "q_34",
+    "question": "כמה זה 3 + 2? (🤟 + ✌️)",
+    "options": ["4", "5", "6", "3"],
+    "correctAnswer": "5",
+    "explanation": "שלוש ועוד שתיים שווה חמש."
+  },
+  {
+    "id": "q_35",
+    "question": "ספרי את הגלידות: 🍦🍦🍦 + 🍦. כמה ביחד?",
+    "options": ["3", "4", "5", "6"],
+    "correctAnswer": "4",
+    "explanation": "שלוש גלידות ועוד אחת זה ארבע."
+  }
+]

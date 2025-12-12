@@ -1,0 +1,16 @@
+[
+  {
+    "id": "level5_q1",
+    "question": "If a triangle has sides of 3, 4, and 5 units, what is its area?",
+    "options": ["6", "7.5", "10", "12"],
+    "correctAnswer": "6",
+    "explanation": "Using Heron's formula or recognizing it's a right triangle: Area = (1/2) × 3 × 4 = 6"
+  },
+  {
+    "id": "level5_q2",
+    "question": "What is 25% of 80?",
+    "options": ["15", "20", "25", "30"],
+    "correctAnswer": "20",
+    "explanation": "25% of 80 = 0.25 × 80 = 20"
+  }
+]

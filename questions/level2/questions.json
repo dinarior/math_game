@@ -1,0 +1,16 @@
+[
+  {
+    "id": "level2_q1",
+    "question": "What is 6 × 7?",
+    "options": ["35", "42", "48", "54"],
+    "correctAnswer": "42",
+    "explanation": "6 × 7 = 42"
+  },
+  {
+    "id": "level2_q2",
+    "question": "What is 36 ÷ 4?",
+    "options": ["8", "9", "10", "12"],
+    "correctAnswer": "9",
+    "explanation": "36 ÷ 4 = 9"
+  }
+]

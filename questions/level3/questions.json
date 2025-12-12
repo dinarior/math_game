@@ -1,0 +1,16 @@
+[
+  {
+    "id": "level3_q1",
+    "question": "What is 47 + 38?",
+    "options": ["75", "83", "85", "91"],
+    "correctAnswer": "85",
+    "explanation": "47 + 38 = 85"
+  },
+  {
+    "id": "level3_q2",
+    "question": "What is 15 × 6?",
+    "options": ["80", "90", "95", "100"],
+    "correctAnswer": "90",
+    "explanation": "15 × 6 = 90"
+  }
+]

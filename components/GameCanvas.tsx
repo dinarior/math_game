@@ -1,9 +1,10 @@
 
 import React, { useRef, useEffect, useCallback, useState } from 'react';
 import { PlayerState, Platform, Collectible, GameState, Particle, CharacterId, Enemy } from '../types';
-import { ArrowLeft, ArrowRight, ArrowUp, Volume2, VolumeX } from 'lucide-react';
+import { ArrowUp, Volume2, VolumeX } from 'lucide-react';
 import ThemedBackground from './ThemedBackground';
 import LivesDisplay from './LivesDisplay';
+import VirtualJoystick from './VirtualJoystick';
 import { getLevelConfig } from '../config/levels';
 import {
   createEnemy,
@@ -841,6 +842,12 @@ const GameCanvas: React.FC<GameCanvasProps> = ({
     keysRef.current[key] = false;
   };
 
+  // Joystick handler
+  const handleJoystickMove = useCallback((direction: 'left' | 'right' | 'neutral') => {
+    keysRef.current['ArrowLeft'] = direction === 'left';
+    keysRef.current['ArrowRight'] = direction === 'right';
+  }, []);
+
   return (
     <div ref={containerRef} className="relative w-full h-full">
       {/* Themed Background Layer */}
@@ -905,34 +912,21 @@ const GameCanvas: React.FC<GameCanvasProps> = ({
         </div>
       </div>
 
-      {/* Mobile Controls */}
-      <div className="absolute bottom-8 left-8 flex gap-4">
-        <button
-          className="w-16 h-16 bg-white/50 backdrop-blur-md rounded-full flex items-center justify-center border-4 border-white active:bg-white/80 active:scale-95 transition-all shadow-lg"
-          onPointerDown={() => handleTouchStart('ArrowLeft')}
-          onPointerUp={() => handleTouchEnd('ArrowLeft')}
-          onPointerLeave={() => handleTouchEnd('ArrowLeft')}
-        >
-          <ArrowLeft size={32} className="text-sky-700" />
-        </button>
-        <button
-          className="w-16 h-16 bg-white/50 backdrop-blur-md rounded-full flex items-center justify-center border-4 border-white active:bg-white/80 active:scale-95 transition-all shadow-lg"
-          onPointerDown={() => handleTouchStart('ArrowRight')}
-          onPointerUp={() => handleTouchEnd('ArrowRight')}
-          onPointerLeave={() => handleTouchEnd('ArrowRight')}
-        >
-          <ArrowRight size={32} className="text-sky-700" />
-        </button>
+      {/* Mobile/Tablet Controls */}
+      <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12 lg:bottom-16 lg:left-16 z-20">
+        <div className="scale-100 md:scale-110 lg:scale-125">
+          <VirtualJoystick onMove={handleJoystickMove} size={140} />
+        </div>
       </div>
 
-      <div className="absolute bottom-8 right-8">
+      <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 lg:bottom-16 lg:right-16 z-20">
         <button
-          className="w-20 h-20 bg-green-400/80 backdrop-blur-md rounded-full flex items-center justify-center border-4 border-white active:bg-green-500 active:scale-95 transition-all shadow-lg"
+          className="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 bg-green-400/80 backdrop-blur-md rounded-full flex items-center justify-center border-4 border-white active:bg-green-500 active:scale-95 transition-all shadow-lg"
           onPointerDown={() => handleTouchStart('Space')}
           onPointerUp={() => handleTouchEnd('Space')}
           onPointerLeave={() => handleTouchEnd('Space')}
         >
-          <ArrowUp size={40} className="text-white" />
+          <ArrowUp size={48} className="text-white md:w-14 md:h-14 lg:w-16 lg:h-16" />
         </button>
       </div>
     </div>

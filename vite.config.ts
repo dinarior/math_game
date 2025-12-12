@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(() => {
     return {
+      base: '/math_game/',
       server: {
         port: 5173,
         host: 'localhost',

@@ -2,13 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-fullscreen" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <title>Math Hopper: Jungle Adventure</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/math_game/assets/index-Qh7WZYyW.js"></script>
-    <link rel="stylesheet" crossorigin href="/math_game/assets/index-DO4WRHsG.css">
+    <style>
+      /* Orientation hint for portrait mode */
+      @media screen and (orientation: portrait) {
+        #orientation-hint {
+          display: flex !important;
+        }
+      }
+      @media screen and (orientation: landscape) {
+        #orientation-hint {
+          display: none !important;
+        }
+      }
+    </style>
+    <script type="module" crossorigin src="/math_game/assets/index-y1w_bXKy.js"></script>
+    <link rel="stylesheet" crossorigin href="/math_game/assets/index-BUZa357Z.css">
   </head>
   <body class="bg-sky-200 overflow-hidden select-none">
+    <!-- Orientation hint for mobile/tablet in portrait mode -->
+    <div id="orientation-hint" style="display: none; position: fixed; inset: 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); z-index: 9999; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; padding: 2rem;">
+      <div style="font-size: 4rem; margin-bottom: 1rem;">📱➡️</div>
+      <h1 style="font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;">Rotate Your Device</h1>
+      <p style="font-size: 1.2rem; opacity: 0.9;">Please turn your device to landscape mode for the best experience</p>
+    </div>
+
     <div id="root"></div>
   </body>
 </html>

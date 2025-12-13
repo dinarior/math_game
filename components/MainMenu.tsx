@@ -1,5 +1,5 @@
-import React from 'react';
-import { Play, Package, Map, Trophy } from 'lucide-react';
+import React, { useState } from 'react';
+import { Play, Package, Map, Trophy, RotateCcw, AlertTriangle } from 'lucide-react';
 import { CharacterId } from '../types';
 import { LevelState } from '../services/levelManager';
 import soundManager from '../services/soundManager';
@@ -11,6 +11,7 @@ interface MainMenuProps {
   onViewCollection: () => void;
   onLevelSelect?: () => void;
   onViewHighScores?: () => void;
+  onResetProgress?: () => void;
   levelState: LevelState;
 }
 
@@ -21,8 +22,10 @@ const MainMenu: React.FC<MainMenuProps> = ({
   onViewCollection,
   onLevelSelect,
   onViewHighScores,
+  onResetProgress,
   levelState
 }) => {
+  const [showResetConfirm, setShowResetConfirm] = useState(false);
   // Calculate total collectibles across all levels
   const totalCollected = Object.values(levelState.levelProgress).reduce(
     (sum, progress) => {
@@ -155,10 +158,64 @@ const MainMenu: React.FC<MainMenuProps> = ({
           Start Adventure
         </button>
 
+        {/* Reset Progress Button */}
+        {onResetProgress && (
+          <button
+            onClick={() => {
+              soundManager.play('buttonClick');
+              setShowResetConfirm(true);
+            }}
+            className="mt-4 flex items-center justify-center gap-2 w-full py-2 px-4 bg-red-100 hover:bg-red-200 text-red-700 font-semibold rounded-lg transition-all text-sm border-2 border-red-300"
+          >
+            <RotateCcw size={16} />
+            Reset All Progress
+          </button>
+        )}
+
         <p className="mt-6 text-gray-400 text-sm font-semibold">
           For ages 4-6 • 10 Levels • Math Adventure Game
         </p>
       </div>
+
+      {/* Reset Confirmation Modal */}
+      {showResetConfirm && (
+        <div className="absolute inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl">
+            <div className="flex justify-center mb-4">
+              <AlertTriangle size={48} className="text-red-500" />
+            </div>
+            <h2 className="text-xl font-bold text-gray-800 mb-2 text-center">
+              Reset All Progress?
+            </h2>
+            <p className="text-gray-600 mb-6 text-center">
+              This will delete all collected animals, scores, and unlocked levels. This cannot be undone!
+            </p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => {
+                  soundManager.play('buttonClick');
+                  setShowResetConfirm(false);
+                }}
+                className="flex-1 py-3 px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold rounded-lg transition-all"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  soundManager.play('buttonClick');
+                  if (onResetProgress) {
+                    onResetProgress();
+                  }
+                  setShowResetConfirm(false);
+                }}
+                className="flex-1 py-3 px-4 bg-red-500 hover:bg-red-600 text-white font-bold rounded-lg transition-all"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

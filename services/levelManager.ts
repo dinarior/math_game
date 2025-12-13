@@ -24,7 +24,7 @@ export interface LevelState {
 }
 
 const DEFAULT_LIVES = 3;
-const COLLECTIBLES_PER_LEVEL = 20;
+const COLLECTIBLES_PER_LEVEL = 10;
 
 // Create default state
 function createDefaultState(): LevelState {
@@ -95,12 +95,16 @@ export function startLevel(state: LevelState, levelId: number): LevelState {
     return startLevel(state, 1);
   }
 
+  // Start with already collected collectibles from this level
+  const levelProgress = state.levelProgress[levelId];
+  const alreadyCollected = levelProgress.collectiblesEarned?.length || 0;
+
   return {
     ...state,
     currentLevel: levelId,
     currentScore: 0,
     currentLives: DEFAULT_LIVES,
-    currentCollectibles: 0,
+    currentCollectibles: alreadyCollected,
   };
 }
 
@@ -118,17 +122,36 @@ export function awardCollectible(state: LevelState): {
   const newCollectibles = state.currentCollectibles + 1;
   const newScore = state.currentScore + 50;  // 50 points per correct answer
 
-  // Pick a random collectible emoji from the level's theme
+  // Pick the next collectible emoji from the level's theme
   const collectibleIndex = (state.currentCollectibles) % config.collectibles.length;
   const collectible = config.collectibles[collectibleIndex];
 
   const levelComplete = newCollectibles >= config.requiredCollectibles;
 
+  // Update level progress with the new collectible
+  const currentProgress = state.levelProgress[state.currentLevel];
+  const updatedCollectiblesEarned = [...new Set([
+    ...(currentProgress.collectiblesEarned || []),
+    ...config.collectibles.slice(0, newCollectibles),
+  ])];
+
+  const updatedProgress: LevelProgress = {
+    ...currentProgress,
+    collectiblesEarned: updatedCollectiblesEarned,
+  };
+
   const newState: LevelState = {
     ...state,
     currentCollectibles: newCollectibles,
     currentScore: newScore,
+    levelProgress: {
+      ...state.levelProgress,
+      [state.currentLevel]: updatedProgress,
+    },
   };
+
+  // Save to localStorage immediately
+  saveLevelState(newState);
 
   return {
     state: newState,

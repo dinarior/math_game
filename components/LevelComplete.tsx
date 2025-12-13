@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Star, Trophy, ArrowRight, Home } from 'lucide-react';
+import { Star, Trophy, ArrowRight, Home, Play } from 'lucide-react';
 import { getLevelConfig, LEVEL_CONFIGS } from '../config/levels';
 import soundManager from '../services/soundManager';
 
@@ -9,6 +9,7 @@ interface LevelCompleteProps {
   livesRemaining: number;
   onNextLevel: () => void;
   onMainMenu: () => void;
+  onContinuePlaying: () => void;
   isLastLevel: boolean;
 }
 
@@ -18,6 +19,7 @@ const LevelComplete: React.FC<LevelCompleteProps> = ({
   livesRemaining,
   onNextLevel,
   onMainMenu,
+  onContinuePlaying,
   isLastLevel,
 }) => {
   const config = getLevelConfig(level);
@@ -35,6 +37,11 @@ const LevelComplete: React.FC<LevelCompleteProps> = ({
   const handleMenuClick = () => {
     soundManager.play('buttonClick');
     onMainMenu();
+  };
+
+  const handleContinueClick = () => {
+    soundManager.play('buttonClick');
+    onContinuePlaying();
   };
 
   return (
@@ -117,6 +124,14 @@ const LevelComplete: React.FC<LevelCompleteProps> = ({
               </div>
             </div>
           )}
+
+          <button
+            onClick={handleContinueClick}
+            className="flex items-center justify-center gap-2 w-full py-3 px-6 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-xl transition-all"
+          >
+            <Play size={20} />
+            <span>המשך לשחק</span>
+          </button>
 
           <button
             onClick={handleMenuClick}

@@ -17,6 +17,7 @@ import {
   stompEnemy,
   loseLife,
   completeLevel,
+  resetAllProgress,
   LevelState,
 } from './services/levelManager';
 import { isHighScore } from './services/highScores';
@@ -172,6 +173,18 @@ const App: React.FC = () => {
     setGameState(GameState.MENU);
   }, []);
 
+  // Handle continue playing (stay on same level after completion)
+  const handleContinuePlaying = useCallback(() => {
+    setGameState(GameState.PLAYING);
+  }, []);
+
+  // Handle reset all progress
+  const handleResetProgress = useCallback(() => {
+    const newState = resetAllProgress();
+    setLevelState(newState);
+    setGameState(GameState.MENU);
+  }, []);
+
   // High score entry
   const handleHighScoreSubmit = useCallback(() => {
     setShowHighScoreEntry(false);
@@ -237,6 +250,7 @@ const App: React.FC = () => {
           onViewCollection={handleViewCollection}
           onLevelSelect={handleLevelSelect}
           onViewHighScores={handleViewHighScores}
+          onResetProgress={handleResetProgress}
           levelState={levelState}
         />
       )}
@@ -272,6 +286,7 @@ const App: React.FC = () => {
           livesRemaining={lives}
           onNextLevel={handleNextLevel}
           onMainMenu={handleMainMenu}
+          onContinuePlaying={handleContinuePlaying}
           isLastLevel={isLastLevel}
         />
       )}
